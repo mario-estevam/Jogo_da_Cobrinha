@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">mariosnake</string>
+    <string name="logo">logo</string>
+    <string name="jogar">Jogar</string>
+    <string name="continuar">continuar</string>
+    <string name="configuracoes">Configuracoes</string>
+    <string name="normal">normal</string>
+    <string name="pequeno">pequeno</string>
+    <string name="facil">facil</string>
+    <string name="medio">medio</string>
+    <string name="dificil">dificil</string>
+    <string name="selecione_o_tamanho_do_tabuleiro_apenas_1_item_deve_ser_marcado">Selecione o tamanho do tabuleiro (apenas 1 item deve ser marcado)</string>
+    <string name="selecione_a_dificuldade_do_jogo_apenas_1_item_deve_ser_marcado">Selecione a dificuldade do jogo (apenas 1 item deve ser marcado)</string>
+    <string name="novo_jogo">Novo jogo</string>
+    <string name="salvar_preferencias">Salvar preferencias</string>
+    <string name="dificuldade_do_jogo">Dificuldade do jogo:</string>
+    <string name="tamanho_do_tabuleiro">Tamanho do tabuleiro:</string>
+    <string name="padr_o">" padrao"</string>
+    <string name="selecione_a_dificuldade" translatable="false">Selecione a dificuldade</string>
+    <string name="selecione_o_tamanho_do_tabuleiro">Selecione o tamanho do tabuleiro</string>
+    <string name="selecione_a_dificuldade_do_jogo">Selecione a dificuldade do jogo</string>
+    <string name="padrao">padrao</string>
+    <string name="resultado">Resultado</string>
+    <string name="ultima_pontua_o">Ultima Pontuação</string>
+    <string name="sair">sair</string>
+</resources>

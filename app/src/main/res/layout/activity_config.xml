@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#168BC34A"
+        tools:context=".MainActivity">
+
+
+        <RadioGroup
+            android:id="@+id/difs"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.19999999">
+
+            <RadioButton
+                android:id="@+id/facil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/facil" />
+
+            <RadioButton
+                android:id="@+id/medio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/medio" />
+
+            <RadioButton
+                android:id="@+id/dificil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dificil" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/dificuldade_do_jogo"
+            android:textStyle="bold"
+            android:typeface="sans"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/difs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tamanho_do_tabuleiro"
+            android:textStyle="bold"
+            android:typeface="sans"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.449"
+            tools:ignore="SpUsage" />
+
+
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/salvar_preferencias"
+            android:onClick="enviar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.887" />
+
+        <RadioGroup
+            android:id="@+id/tams"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6">
+
+            <RadioButton
+                android:id="@+id/padrao"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:text="@string/padrao" />
+
+            <RadioButton
+                android:id="@+id/peq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pequeno" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
