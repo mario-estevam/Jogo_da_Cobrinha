@@ -5,35 +5,25 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.mariosnake.R.layout.activity_config
 import com.example.mariosnake.databinding.ActivityConfigBinding
 
 
 lateinit var bindingC: ActivityConfigBinding
+lateinit var modelViewConfig: ActivityConfigViewModel
 
 class ActivityConfig : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingC = DataBindingUtil.setContentView(this, activity_config)
+        modelViewConfig = ViewModelProvider(this,).get(ActivityConfigViewModel::class.java)
+
         val param = intent.extras
-        val texto = param?.getString("nivel")
-        val texto2 = param?.getString("tabuleiro")
-
-        if(texto.toString() == "facil"){
-            bindingC.facil.isChecked =  true
-        } else if ( texto.toString() == "medio"){
-            bindingC.medio.isChecked = true
-        } else if ( texto.toString() == "dificil"){
-            bindingC.dificil.isChecked = true
-        }
-
-        if(texto2.toString()=="padrao"){
-            bindingC.padrao.isChecked = true
-        } else if (texto2.toString() == "pequeno"){
-            bindingC.peq.isChecked = true
-        }
+        modelViewConfig.texto = param?.getString("nivel").toString()
+        modelViewConfig.texto2 = param?.getString("tabuleiro").toString()
+        modelViewConfig.recebe()
     }
 
     fun enviar(view: View){

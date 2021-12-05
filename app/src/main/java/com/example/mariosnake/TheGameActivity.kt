@@ -30,25 +30,9 @@ class TheGameActivity : AppCompatActivity() {
         bindingG.lifecycleOwner = this
 
         val param = intent.extras
-        val texto = param?.getString("nivel")
-        val texto2 = param?.getString("tabuleiro")
-
-        if(texto2.toString()=="padrao"){
-            modelViewGame.LINHA = 30
-            modelViewGame.COLUNA = 35
-        } else if (texto2.toString() == "pequeno"){
-            modelViewGame.LINHA = 20
-            modelViewGame.COLUNA = 28
-        }
-
-        if(texto.toString() == "facil"){
-            modelViewGame.speed = 300;
-        } else if ( texto.toString() == "medio"){
-            modelViewGame.speed = 200;
-        } else if ( texto.toString() == "dificil"){
-            modelViewGame.speed = 100;
-        }
-
+        modelViewGame.texto = param?.getString("nivel").toString()
+        modelViewGame.texto2 = param?.getString("tabuleiro").toString()
+        modelViewGame.parametros()
 
         val inflater = LayoutInflater.from(this)
         for (i in 0 until modelViewGame.LINHA) {
@@ -65,33 +49,7 @@ class TheGameActivity : AppCompatActivity() {
             while(modelViewGame.running){
                 Thread.sleep(modelViewGame.speed)
                 runOnUiThread{
-                    //limpa tela
-                    for (i in 0 until modelViewGame.LINHA) {
-                        for (j in 0 until modelViewGame.COLUNA) {
-                            modelViewGame.boardView[i][j]!!.setImageResource(R.drawable.black)
-                        }
-                    }
-
-                    //move peça atual
-                    //WHEN (DIRECAO = LEFT)
-                   if(modelViewGame.direcao == "cima"){
-                       modelViewGame.pt.moveUp()
-                   } else if (modelViewGame.direcao == "baixo"){
-                       modelViewGame.pt.moveDown()
-                   } else if(modelViewGame.direcao == "direita"){
-                       modelViewGame.pt.moveLeft()
-                   } else if (modelViewGame.direcao == "esquerda"){
-                       modelViewGame.pt.moveRight()
-                   }
-
-
-                    try {
-                        modelViewGame.boardView[modelViewGame.pt.x][modelViewGame.pt.y]!!.setImageResource(R.drawable.green)
-                    }catch (e:ArrayIndexOutOfBoundsException ) {
-                        //se a peça passou das bordas eu vou parar o jogo
-                        modelViewGame.running = false
-                    }
-
+                    modelViewGame.Thread()
                 }
             }
         }.start()

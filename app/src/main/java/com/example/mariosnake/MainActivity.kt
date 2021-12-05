@@ -25,41 +25,15 @@ class MainActivity : AppCompatActivity() {
             when(it.resultCode){
                 RESULT_OK->{
                     val param = it.data?.extras
-                    val texto = param?.getString("nivel")
-                    val texto2 = param?.getString("tabuleiro")
-
-                    if (texto.toString() == "facil") {
-                        viewModel.dificuldade.value = "facil"
-                    } else if (texto.toString() == "medio"){
-                        viewModel.dificuldade.value = "medio"
-                    } else if (texto.toString() == "dificil"){
-                        viewModel.dificuldade.value = "dificil"
-                    }
-                    //verificando tamanho do tabuleiro
-                    if(texto2.toString()=="padrao"){
-                        viewModel.tamanho.value = "padrao"
-                    }
-                    if(texto2.toString() == "pequeno") {
-                        viewModel.tamanho.value = "pequeno"
-                    }
-
+                    viewModel.texto = param?.getString("nivel").toString()
+                    viewModel.texto2 = param?.getString("tabuleiro").toString()
+                    viewModel.params()
                 }
                 RESULT_CANCELED ->{
 
                 }
-
             }
         }
-
-
-//        viewModel.dificuldade.observe(this, Observer {
-//            var dificuldade = it.toString()
-//        })
-//
-//        viewModel.tamanho.observe(this, Observer {
-//            var tamanho = it.toString()
-//        })
-
 
         binding.jogar.setOnClickListener {
             if(viewModel.flagButton == true){
@@ -81,8 +55,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtras(parametro)
             activityResult.launch(intent)
         }
-
-
     }
 
     override fun onStart() {
