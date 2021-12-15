@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mariosnake.R.layout.activity_config
 import com.example.mariosnake.databinding.ActivityConfigBinding
+import com.example.mariosnake.viewModell.ActivityConfigViewModel
 
 
 lateinit var bindingC: ActivityConfigBinding
@@ -51,8 +52,8 @@ class ActivityConfig : AppCompatActivity() {
             }
         }
 
-        var intent = Intent()
-        var parameter = Bundle()
+        val intent = Intent()
+        val parameter = Bundle()
         parameter.putString("nivel", dif)
         parameter.putString("tabuleiro", tab)
         intent.putExtras(parameter)

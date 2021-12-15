@@ -1,7 +1,8 @@
-package com.example.mariosnake
+package com.example.mariosnake.viewModell
 
 
 import androidx.lifecycle.ViewModel
+import com.example.mariosnake.bindingC
 
 class ActivityConfigViewModel:ViewModel() {
 
@@ -13,7 +14,7 @@ class ActivityConfigViewModel:ViewModel() {
             bindingC.facil.isChecked =  true
         } else if ( texto == "medio"){
             bindingC.medio.isChecked = true
-        } else if ( texto.toString() == "dificil"){
+        } else if ( texto == "dificil"){
             bindingC.dificil.isChecked = true
         }
 

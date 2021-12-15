@@ -23,4 +23,7 @@
     <string name="resultado">Resultado</string>
     <string name="ultima_pontua_o">Ultima Pontuação</string>
     <string name="sair">sair</string>
+    <string name="pontuacao">Pontuacao:</string>
+    <string name="parar">Parar</string>
+    <string name="finalizar">Finalizar</string>
 </resources>

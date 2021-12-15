@@ -19,9 +19,12 @@
     <string name="padr_o">pattern</string>
     <string name="selecione_a_dificuldade_do_jogo">Select game difficulty</string>
     <string name="selecione_o_tamanho_do_tabuleiro">Select board size</string>
-    <string name="selecione_a_dificuldade">" Select difficulty"</string>
+    <string name="selecione_a_dificuldade">Select difficulty</string>
     <string name="padrao">pattern</string>
     <string name="resultado">Result</string>
     <string name="sair">Exit</string>
     <string name="ultima_pontua_o">last score</string>
+    <string name="pontuacao">Score:</string>
+    <string name="parar">Stop</string>
+    <string name="finalizar">Finish</string>
 </resources>
