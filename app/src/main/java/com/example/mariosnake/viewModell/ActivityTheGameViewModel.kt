@@ -1,134 +1,110 @@
 package com.example.mariosnake.viewModell
 
+import android.media.MediaPlayer
 import android.util.Log
 import android.widget.ImageView
 import androidx.lifecycle.ViewModel
 import com.example.mariosnake.R
 import com.example.mariosnake.bindingG
+import com.example.mariosnake.model.Cobra
+import com.example.mariosnake.model.Fruta
+import com.example.mariosnake.model.Tabuleiro
+
 
 
 class ActivityTheGameViewModel: ViewModel() {
-    var LINHA = 30
-    var COLUNA = 35
+    var tabuleiro: Tabuleiro = Tabuleiro(30,35)
+    var cobra:Cobra = Cobra(14,16,600)
+    var fruta: Fruta = Fruta(10,10)
     var running = true
-    var speed:Long = 300
+
     var direcao = ""
     var texto = ""
     var texto2 = ""
     var flagFt = false;
-    var snake = R.drawable.green
-    var pt = Ponto(14,16)
-    var ft = Fruta(7,7)
+    var snake = R.drawable.green // é a cobra
     var score1 = "0"
     var score = score1.toInt();
     var run = true
-
-    inner class Fruta(var x:Int, var y:Int){
-
-
-        fun position(){
-            x=10;
-            y =10;
-        }
-
-        fun randon(){
-            x = (0..20).random()
-            y = (0..25).random()
-        }
-
-
-    }
-
-
-    inner class Ponto(var x:Int,var y:Int){
-        fun moveDown(){
-            x++
-        }
-        fun moveUp(){
-            x--
-        }
-        fun moveLeft(){
-            y++
-        }
-        fun moveRight(){
-            y--
-        }
-    }
-
+    var estado = false
 
     fun inicial(){
-        bindingG.gridboard.rowCount = LINHA
-        bindingG.gridboard.columnCount = COLUNA
+        bindingG.gridboard.rowCount = tabuleiro.linha
+        bindingG.gridboard.columnCount = tabuleiro.coluna
     }
 
     fun parametros(){
         if(texto2=="padrao"){
-            LINHA = 30
-           COLUNA = 35
+            tabuleiro.linha = 30
+            tabuleiro.coluna = 35
         } else if (texto2 == "pequeno"){
-           LINHA = 20
-            COLUNA = 28
+            tabuleiro.linha = 20
+            tabuleiro.coluna = 35
         }
 
+
+
         if(texto == "facil"){
-            speed = 600;
-            Log.e("velocidade", speed.toString())
+            cobra.speed = 600;
+            Log.e("velocidade", cobra.speed.toString())
         } else if ( texto == "medio"){
-            speed = 200;
-            Log.e("velocidade", speed.toString())
+            cobra.speed = 200;
+            Log.e("velocidade",cobra.speed.toString())
         } else if ( texto == "dificil"){
-            speed = 100;
-            Log.e("velocidade", speed.toString())
+            cobra.speed = 100;
+            Log.e("velocidade", cobra.speed.toString())
+        } else if(texto == "mtd"){
+            cobra.speed = 50
         }
 
     }
 
     fun thread(){
         //limpa tela
-        for (i in 0 until LINHA) {
-            for (j in 0 until COLUNA) {
+        for (i in 0 until tabuleiro.linha) {
+            for (j in 0 until tabuleiro.coluna) {
                 boardView[i][j]!!.setImageResource(R.drawable.black)
             }
         }
         if(direcao == "cima"){
-            pt.moveUp()
+            cobra.moveUp()
         } else if (direcao == "baixo"){
-            pt.moveDown()
+            cobra.moveDown()
         } else if(direcao == "direita"){
-            pt.moveLeft()
+            cobra.moveRight()
         } else if (direcao == "esquerda"){
-            pt.moveRight()
+            cobra.moveLeft()
         }
 
-       if(!flagFt){
-          ft.position()
-       }
+        if(!flagFt){
+            fruta.position()
+        }
 
-        if((ft.x == pt.x) && (ft.y == pt.y) ){
-            ft.randon()
+        if((fruta.x == cobra.x) && (fruta.y == cobra.y) ){
+            fruta.randon()
             flagFt = true
             score++
             score1=score.toString()
-            //boardView[pt.x++][pt.y++]!!.setImageResource(snake)
+            boardView[cobra.x][cobra.y]!!.setImageResource(snake)
         }
-        if((pt.x == 30)||(pt.y==35)){
+        if((cobra.x == 30)||(cobra.y==35)){
             run = false
             running = false
         }
 
 
-
         try {
-            boardView[ft.x][ft.y]!!.setImageResource(R.drawable.white)
-            boardView[pt.x][pt.y]!!.setImageResource(snake)
+            boardView[fruta.x][fruta.y]!!.setImageResource(R.drawable.white)
+            boardView[cobra.x][cobra.y]!!.setImageResource(snake)
         }catch (e:ArrayIndexOutOfBoundsException ) {
-            Log.e("entrou", "entrouuu")
-            //se a peça passou das bordas eu vou parar o jogo
-           running = false
-            Log.e("running", running.toString())
-
+            running = false
         }
     }
+//
+//    fun somft(){
+//        val mediaPlayer:MediaPlayer = MediaPlayer.create(this @ActivityTheGameViewModel,R.raw.eat)
+//        mediaPlayer.start()
+//    }
 
 
     fun direcaoCima(){
@@ -144,13 +120,9 @@ class ActivityTheGameViewModel: ViewModel() {
         direcao = "esquerda"
     }
 
-    //val board = Array(LINHA, { IntArray(COLUNA) })
 
-    var board = Array(LINHA) {
-        Array(COLUNA){0}
-    }
 
-    var boardView = Array(LINHA){
-        arrayOfNulls<ImageView>(COLUNA)
+    var boardView = Array(tabuleiro.linha){
+        arrayOfNulls<ImageView>(tabuleiro.coluna)
     }
 }

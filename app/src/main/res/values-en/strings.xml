@@ -27,4 +27,7 @@
     <string name="pontuacao">Score:</string>
     <string name="parar">Stop</string>
     <string name="finalizar">Finish</string>
+    <string name="recorde">Record</string>
+    <string name="muito_dificil">Very Hard</string>
+    <string name="ultima_pontuacao">" last score"</string>
 </resources>

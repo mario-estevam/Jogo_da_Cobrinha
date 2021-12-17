@@ -6,21 +6,23 @@ import com.example.mariosnake.bindingC
 
 class ActivityConfigViewModel:ViewModel() {
 
-    var texto = ""
-    var texto2 = ""
+    var dificuldade = ""
+    var tabuleiroB = ""
 
     fun recebe(){
-        if(texto == "facil"){
+        if(dificuldade== "facil"){
             bindingC.facil.isChecked =  true
-        } else if ( texto == "medio"){
+        } else if ( dificuldade == "medio"){
             bindingC.medio.isChecked = true
-        } else if ( texto == "dificil"){
+        } else if ( dificuldade == "dificil"){
             bindingC.dificil.isChecked = true
+        } else if(dificuldade == "mtd"){
+            bindingC.mtdificil.isChecked = true
         }
 
-        if(texto2=="padrao"){
+        if(tabuleiroB=="padrao"){
             bindingC.padrao.isChecked = true
-        } else if (texto2 == "pequeno"){
+        } else if (tabuleiroB == "pequeno"){
             bindingC.peq.isChecked = true
         }
     }

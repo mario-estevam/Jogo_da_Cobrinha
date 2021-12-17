@@ -10,27 +10,29 @@ class MainActivityViewModel: ViewModel() {
     var dificuldade = MutableLiveData<String>("facil")
     var tamanho = MutableLiveData<String>("padrao")
     var flagButton = "false" // flag passada pra activity the game que verifica se o jogo já foi inciado para ativar o botão continuar
-    var texto = ""
-    var texto2 = ""
+    var dificuldadeP = ""
+    var tabuleiroP = ""
     var score = "0"
 
 
     fun params(){
-        if (texto == "facil") {
+        if (dificuldadeP == "facil") {
         dificuldade.value = "facil"
             Log.e("dificuldade",dificuldade.value.toString())
-        } else if (texto == "medio"){
+        } else if (dificuldadeP == "medio"){
             dificuldade.value = "medio"
             Log.e("dificuldade",dificuldade.value.toString())
-        } else if (texto == "dificil"){
+        } else if (dificuldadeP == "dificil"){
             dificuldade.value = "dificil"
             Log.e("dificuldade", dificuldade.value.toString())
+        }else if(dificuldadeP == "mtd"){
+            dificuldade.value = "mtd"
         }
         //verificando tamanho do tabuleiro
-        if(texto2 =="padrao"){
+        if(tabuleiroP =="padrao"){
             tamanho.value = "padrao"
         }
-        if(texto2 == "pequeno") {
+        if(tabuleiroP == "pequeno") {
             tamanho.value = "pequeno"
         }
 

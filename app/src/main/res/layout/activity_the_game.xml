@@ -10,13 +10,14 @@
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/border">
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="410dp"
-        android:layout_height="550dp"
+        android:layout_width="416dp"
+        android:layout_height="496dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,10 +39,10 @@
         android:gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.766"
+        app:layout_constraintHorizontal_bias="0.816"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917"
+        app:layout_constraintVertical_bias="0.824"
         tools:ignore="MissingConstraints">
 
         <ImageButton
@@ -108,18 +109,20 @@
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+        app:layout_constraintVertical_bias="0.744" />
 
     <TextView
         android:id="@+id/pontos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.816"
+        tools:ignore="SpUsage" />
 
     <Button
         android:id="@+id/parar"
@@ -128,23 +131,23 @@
         android:text="@string/parar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994"
+        app:layout_constraintVertical_bias="0.985"
         tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/stoped"
-        android:layout_width="86dp"
-        android:layout_height="40dp"
+        android:layout_width="123dp"
+        android:layout_height="42dp"
         android:text="@string/finalizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.713"
+        app:layout_constraintHorizontal_bias="0.784"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994"
+        app:layout_constraintVertical_bias="0.976"
         tools:ignore="DuplicateIds" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

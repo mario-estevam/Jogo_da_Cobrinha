@@ -26,4 +26,7 @@
     <string name="pontuacao">Pontuacao:</string>
     <string name="parar">Parar</string>
     <string name="finalizar">Finalizar</string>
+    <string name="recorde">Recorde</string>
+    <string name="muito_dificil">Muito Dificil</string>
+    <string name="ultima_pontuacao">Ultima pontuacao</string>
 </resources>

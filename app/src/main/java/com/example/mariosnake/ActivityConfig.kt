@@ -22,8 +22,8 @@ class ActivityConfig : AppCompatActivity() {
         modelViewConfig = ViewModelProvider(this,).get(ActivityConfigViewModel::class.java)
 
         val param = intent.extras
-        modelViewConfig.texto = param?.getString("nivel").toString()
-        modelViewConfig.texto2 = param?.getString("tabuleiro").toString()
+        modelViewConfig.dificuldade = param?.getString("nivel").toString()
+        modelViewConfig.tabuleiroB = param?.getString("tabuleiro").toString()
         modelViewConfig.recebe()
     }
 
@@ -40,6 +40,9 @@ class ActivityConfig : AppCompatActivity() {
             }
             bindingC.dificil.id->{
                 dif = "dificil"
+            }
+            bindingC.mtdificil.id->{
+                dif = "mtd"
             }
         }
 
