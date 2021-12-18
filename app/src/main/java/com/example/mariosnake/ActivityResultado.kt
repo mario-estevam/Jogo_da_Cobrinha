@@ -43,6 +43,7 @@ class ActivityResultado : AppCompatActivity() {
 
         rec =  viewModelResultado.recorde
         last = viewModelResultado.pontos
+
         bindingA.novo.setOnClickListener{
             val intent = Intent()
             setResult(Activity.RESULT_OK, intent)

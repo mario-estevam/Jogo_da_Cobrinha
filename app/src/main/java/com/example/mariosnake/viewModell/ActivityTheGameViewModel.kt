@@ -8,19 +8,20 @@ import com.example.mariosnake.R
 import com.example.mariosnake.bindingG
 import com.example.mariosnake.model.Cobra
 import com.example.mariosnake.model.Fruta
+import com.example.mariosnake.model.Ponto
 import com.example.mariosnake.model.Tabuleiro
-
+import com.example.mariosnake.modelViewGame
 
 
 class ActivityTheGameViewModel: ViewModel() {
     var tabuleiro: Tabuleiro = Tabuleiro(30,35)
     var cobra:Cobra = Cobra(14,16,600)
-    var fruta: Fruta = Fruta(10,10)
+    var fruta: Fruta = Fruta(15,16)
+    var ponto:Ponto = Ponto(14,16)
     var running = true
-
     var direcao = ""
-    var texto = ""
-    var texto2 = ""
+    var dificuldade = ""
+    var tmTab = ""
     var flagFt = false;
     var snake = R.drawable.green // é a cobra
     var score1 = "0"
@@ -28,84 +29,94 @@ class ActivityTheGameViewModel: ViewModel() {
     var run = true
     var estado = false
 
+
     fun inicial(){
         bindingG.gridboard.rowCount = tabuleiro.linha
         bindingG.gridboard.columnCount = tabuleiro.coluna
+        cobra.listPosicaoCobra.add(Ponto(15, 15))
     }
 
     fun parametros(){
-        if(texto2=="padrao"){
+
+
+        if(tmTab=="padrao"){
             tabuleiro.linha = 30
             tabuleiro.coluna = 35
-        } else if (texto2 == "pequeno"){
+        } else if (tmTab == "pequeno"){
             tabuleiro.linha = 20
             tabuleiro.coluna = 35
         }
 
-
-
-        if(texto == "facil"){
-            cobra.speed = 600;
-            Log.e("velocidade", cobra.speed.toString())
-        } else if ( texto == "medio"){
-            cobra.speed = 200;
-            Log.e("velocidade",cobra.speed.toString())
-        } else if ( texto == "dificil"){
-            cobra.speed = 100;
-            Log.e("velocidade", cobra.speed.toString())
-        } else if(texto == "mtd"){
-            cobra.speed = 50
+        when (dificuldade) {
+            "facil" -> {
+                cobra.speed = 600;
+                Log.e("velocidade", cobra.speed.toString())
+            }
+            "medio" -> {
+                cobra.speed = 200;
+                Log.e("velocidade",cobra.speed.toString())
+            }
+            "dificil" -> {
+                cobra.speed = 100;
+                Log.e("velocidade", cobra.speed.toString())
+            }
+            "mtd" -> {
+                cobra.speed = 50
+            }
         }
 
     }
 
-    fun thread(){
+    fun limpaTela(){
         //limpa tela
         for (i in 0 until tabuleiro.linha) {
             for (j in 0 until tabuleiro.coluna) {
                 boardView[i][j]!!.setImageResource(R.drawable.black)
             }
         }
-        if(direcao == "cima"){
-            cobra.moveUp()
-        } else if (direcao == "baixo"){
-            cobra.moveDown()
-        } else if(direcao == "direita"){
-            cobra.moveRight()
-        } else if (direcao == "esquerda"){
-            cobra.moveLeft()
-        }
+    }
 
-        if(!flagFt){
-            fruta.position()
-        }
-
-        if((fruta.x == cobra.x) && (fruta.y == cobra.y) ){
-            fruta.randon()
-            flagFt = true
-            score++
-            score1=score.toString()
-            boardView[cobra.x][cobra.y]!!.setImageResource(snake)
-        }
-        if((cobra.x == 30)||(cobra.y==35)){
-            run = false
-            running = false
-        }
-
-
-        try {
-            boardView[fruta.x][fruta.y]!!.setImageResource(R.drawable.white)
-            boardView[cobra.x][cobra.y]!!.setImageResource(snake)
-        }catch (e:ArrayIndexOutOfBoundsException ) {
-            running = false
+    fun moveCobra(){
+       when(direcao){
+           "cima" -> {
+               cobra.moveUp()
+           }
+           "baixo" -> {
+               cobra.moveDown()
+           }
+           "esquerda" -> {
+               cobra.moveLeft()
+           }
+           "direita" -> {
+               cobra.moveRight()
+           }
         }
     }
-//
-//    fun somft(){
-//        val mediaPlayer:MediaPlayer = MediaPlayer.create(this @ActivityTheGameViewModel,R.raw.eat)
-//        mediaPlayer.start()
-//    }
 
+    fun printCobra() {
+        for (i in 0 until cobra.listPosicaoCobra.size) {
+            boardView[cobra.listPosicaoCobra[i].x][cobra.listPosicaoCobra[i].y]!!.setImageResource(R.drawable.green)
+        }
+    }
+
+
+
+fun frutaFun(){
+    if(!flagFt){
+        fruta.position()
+    }
+
+    if((fruta.x == cobra.listPosicaoCobra[0].x) && (fruta.y == cobra.listPosicaoCobra[0].y) ){
+        fruta.randon()
+        flagFt = true
+        score++
+        score1=score.toString()
+        cobra.listPosicaoCobra.add(Ponto(cobra.listPosicaoCobra[0].x, cobra.listPosicaoCobra[0].y++))
+    }
+
+    boardView[fruta.x][fruta.y]!!.setImageResource(R.drawable.white)
+
+}
 
     fun direcaoCima(){
         direcao = "cima"
@@ -126,3 +137,5 @@ class ActivityTheGameViewModel: ViewModel() {
         arrayOfNulls<ImageView>(tabuleiro.coluna)
     }
 }
+
+

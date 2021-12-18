@@ -3,13 +3,13 @@ package com.example.mariosnake.model
 data class Fruta(var x:Int, var y:Int ) {
 
     init{
-        x = 10
-        y = 10
+        x = 14
+        y = 15
     }
 
     fun position(){
-        x=10;
-        y =10;
+        x=14;
+        y =15;
     }
 
     fun randon(){

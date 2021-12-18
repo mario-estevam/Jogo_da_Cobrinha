@@ -2,29 +2,38 @@ package com.example.mariosnake.model
 
 import com.example.mariosnake.R
 
+
 data class Cobra(var x:Int, var y:Int, var speed:Long ) {
 
     init {
-        x = 14
-        y = 16
         speed = 600
     }
+    var listPosicaoCobra = mutableListOf<Ponto>()
 
-    fun cb(){
-        var cob = R.drawable.green
-    }
 
         fun moveDown(){
-            x++
+            for (i in 0 until listPosicaoCobra.size) {
+                listPosicaoCobra[i].x = listPosicaoCobra[i].x + 1
+            }
         }
+
         fun moveUp(){
-            x--
+            for (i in 0 until listPosicaoCobra.size) {
+                listPosicaoCobra[i].x = listPosicaoCobra[i].x - 1
+            }
         }
+
         fun moveLeft(){
-            y--
+            for (i in 0 until listPosicaoCobra.size) {
+                listPosicaoCobra[i].y = listPosicaoCobra[i].y - 1
+            }
         }
+
         fun moveRight(){
-            y++
+            for (i in 0 until listPosicaoCobra.size) {
+                listPosicaoCobra[i].y = listPosicaoCobra[i].y + 1
+            }
+
         }
 
 
