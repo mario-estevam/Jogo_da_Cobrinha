@@ -8,33 +8,45 @@ data class Cobra(var x:Int, var y:Int, var speed:Long ) {
     init {
         speed = 600
     }
-    var listPosicaoCobra = mutableListOf<Ponto>()
 
+    var ponto: Ponto = Ponto(1, 20)
+    var xc = mutableListOf(1, 20)
+    var snake = mutableListOf(mutableListOf(1, 20))
 
-        fun moveDown(){
-            for (i in 0 until listPosicaoCobra.size) {
-                listPosicaoCobra[i].x = listPosicaoCobra[i].x + 1
-            }
-        }
+    fun restartGame(){
 
-        fun moveUp(){
-            for (i in 0 until listPosicaoCobra.size) {
-                listPosicaoCobra[i].x = listPosicaoCobra[i].x - 1
-            }
-        }
+        ponto= Ponto(1,20)
+        xc = mutableListOf(1,20)
+        snake = mutableListOf(mutableListOf(1,20))
 
-        fun moveLeft(){
-            for (i in 0 until listPosicaoCobra.size) {
-                listPosicaoCobra[i].y = listPosicaoCobra[i].y - 1
-            }
-        }
+    }
 
-        fun moveRight(){
-            for (i in 0 until listPosicaoCobra.size) {
-                listPosicaoCobra[i].y = listPosicaoCobra[i].y + 1
-            }
+    fun aumentarCobra() {
 
-        }
+        ponto = Ponto(xc[0], xc[1])
+        snake.add(0, mutableListOf(ponto.cobraLinha, ponto.cobraColuna))
+
+    }
+
+    fun removerCauda() {
+        snake.removeLast()
+    }
+
+    fun moveDown() {
+        xc[0]++
+    }
+
+    fun moveUp() {
+        xc[0]--
+    }
+
+    fun moveLeft(){
+        xc[1]--
+    }
+
+    fun moveRight(){
+        xc[1]++
+    }
 
 
 }

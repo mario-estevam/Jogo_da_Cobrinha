@@ -29,11 +29,10 @@ class ActivityTheGameViewModel: ViewModel() {
     var run = true
     var estado = false
 
-
     fun inicial(){
         bindingG.gridboard.rowCount = tabuleiro.linha
         bindingG.gridboard.columnCount = tabuleiro.coluna
-        cobra.listPosicaoCobra.add(Ponto(15, 15))
+
     }
 
     fun parametros(){
@@ -67,56 +66,106 @@ class ActivityTheGameViewModel: ViewModel() {
 
     }
 
-    fun limpaTela(){
-        //limpa tela
+    fun thread(){
+
+
         for (i in 0 until tabuleiro.linha) {
             for (j in 0 until tabuleiro.coluna) {
                 boardView[i][j]!!.setImageResource(R.drawable.black)
             }
         }
-    }
 
-    fun moveCobra(){
-       when(direcao){
-           "cima" -> {
-               cobra.moveUp()
-           }
-           "baixo" -> {
-               cobra.moveDown()
-           }
-           "esquerda" -> {
-               cobra.moveLeft()
-           }
-           "direita" -> {
-               cobra.moveRight()
-           }
+        if (direcao == "cima" ){
+            cobra.moveUp()
+        } else if (direcao == "baixo" ){
+            cobra.moveDown()
+        } else if(direcao == "direita"){
+            cobra.moveRight()
+        } else if (direcao == "esquerda"){
+            cobra.moveLeft()
         }
-    }
 
-    fun printCobra() {
-        for (i in 0 until cobra.listPosicaoCobra.size) {
-            boardView[cobra.listPosicaoCobra[i].x][cobra.listPosicaoCobra[i].y]!!.setImageResource(R.drawable.green)
+        if(!flagFt){
+            fruta.position()
         }
+
+        cobra.aumentarCobra()
+
+        if((fruta.x == cobra.xc[0]) && (fruta.y == cobra.xc[1]) ){
+            fruta.randon()
+            flagFt = true
+            score++;
+            score1 = score.toString()
+
+        }else{
+            cobra.removerCauda()
+        }
+
+        if((cobra.xc[0] == 41)||(cobra.xc[1]==41)){
+            running = false
+        }
+
+            boardView[fruta.x][fruta.y]!!.setImageResource(R.drawable.white)
+            for (i in 0 until cobra.snake.size){
+                boardView[cobra.snake[i][0]][cobra.snake[i][1]]!!.setImageResource(R.drawable.green)
+            }
+
+            //boardView[cobra.linha][cobra.coluna]!!.setImageResource(R.drawable.white)
+
+
+
     }
 
-
-
-fun frutaFun(){
-    if(!flagFt){
-        fruta.position()
-    }
-
-    if((fruta.x == cobra.listPosicaoCobra[0].x) && (fruta.y == cobra.listPosicaoCobra[0].y) ){
-        fruta.randon()
-        flagFt = true
-        score++
-        score1=score.toString()
-        cobra.listPosicaoCobra.add(Ponto(cobra.listPosicaoCobra[0].x, cobra.listPosicaoCobra[0].y++))
-    }
-
-    boardView[fruta.x][fruta.y]!!.setImageResource(R.drawable.white)
-
-}
+//    fun limpaTela(){
+//        //limpa tela
+//        for (i in 0 until tabuleiro.linha) {
+//            for (j in 0 until tabuleiro.coluna) {
+//                boardView[i][j]!!.setImageResource(R.drawable.black)
+//            }
+//        }
+//    }
+//
+//    fun moveCobra(){
+//       when(direcao){
+//           "cima" -> {
+//               cobra.moveUp()
+//           }
+//           "baixo" -> {
+//               cobra.moveDown()
+//           }
+//           "esquerda" -> {
+//               cobra.moveLeft()
+//           }
+//           "direita" -> {
+//               cobra.moveRight()
+//           }
+//        }
+//    }
+//
+//    fun printCobra() {
+//        for (i in 0 until cobra.listPosicaoCobra.size) {
+//            boardView[cobra.listPosicaoCobra[i].x][cobra.listPosicaoCobra[i].y]!!.setImageResource(R.drawable.green)
+//        }
+//    }
+//
+//
+//
+//fun frutaFun(){
+//    if(!flagFt){
+//        fruta.position()
+//    }
+//
+//    if((fruta.x == cobra.listPosicaoCobra[0].x) && (fruta.y == cobra.listPosicaoCobra[0].y) ){
+//        fruta.randon()
+//        flagFt = true
+//        score++
+//        score1=score.toString()
+//        cobra.listPosicaoCobra.add(Ponto(cobra.listPosicaoCobra[0].x, cobra.listPosicaoCobra[0].y++))
+//    }
+//
+//    boardView[fruta.x][fruta.y]!!.setImageResource(R.drawable.white)
+//
+//}
 
     fun direcaoCima(){
         direcao = "cima"

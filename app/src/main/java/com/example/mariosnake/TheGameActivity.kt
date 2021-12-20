@@ -33,8 +33,8 @@ class TheGameActivity : AppCompatActivity() {
                 cont = 0
                 modelViewGame.fruta.x = 10
                 modelViewGame.fruta.y = 10
-                modelViewGame.cobra.listPosicaoCobra.clear()
-                modelViewGame.cobra.listPosicaoCobra.add(Ponto(15, 15))
+                modelViewGame.cobra.xc.clear()
+                modelViewGame.cobra.restartGame()
                 modelViewGame.score1 = "0"
                 modelViewGame.score = 0
                 modelViewGame.running = true
@@ -110,10 +110,7 @@ class TheGameActivity : AppCompatActivity() {
                     Thread.sleep(modelViewGame.cobra.speed)
                     runOnUiThread{
                         try {
-                                modelViewGame.limpaTela()
-                                modelViewGame.moveCobra()
-                                modelViewGame.printCobra()
-                                modelViewGame.frutaFun()
+                               modelViewGame.thread()
                                 bindingG.pontos.text = modelViewGame.score1
 
                         }catch (e:Exception){
