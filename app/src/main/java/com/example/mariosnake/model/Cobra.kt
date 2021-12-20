@@ -13,7 +13,7 @@ data class Cobra(var x:Int, var y:Int, var speed:Long ) {
     var xc = mutableListOf(1, 20)
     var snake = mutableListOf(mutableListOf(1, 20))
 
-    fun restartGame(){
+    fun restaurarEstado(){
 
         ponto= Ponto(1,20)
         xc = mutableListOf(1,20)

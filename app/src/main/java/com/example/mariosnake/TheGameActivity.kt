@@ -34,7 +34,7 @@ class TheGameActivity : AppCompatActivity() {
                 modelViewGame.fruta.x = 10
                 modelViewGame.fruta.y = 10
                 modelViewGame.cobra.xc.clear()
-                modelViewGame.cobra.restartGame()
+                modelViewGame.cobra. restaurarEstado()
                 modelViewGame.score1 = "0"
                 modelViewGame.score = 0
                 modelViewGame.running = true

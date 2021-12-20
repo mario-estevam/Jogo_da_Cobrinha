@@ -3,7 +3,7 @@ package com.example.mariosnake.model
 data class Fruta(var x:Int, var y:Int ) {
 
     init{
-        x = 14
+        x = 1
         y = 15
     }
 
